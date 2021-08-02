@@ -1,0 +1,50 @@
+.body{
+    background-color: #a0c1ff;
+}
+.top-header{
+    height: 150px;
+    background-color: #000f5c;
+}
+.bottom-header{
+    height: 50px;
+    background-color: white;
+}
+.main-nav {
+  background-color: #2a80b9;
+  color: white;
+}
+.main-nav a {
+  color: white;
+}
+.main-nav .list-menu {
+border-bottom: 1px solid #3598db;
+}
+.main-nav .notification {
+padding: 20px 0;
+text-align: left;
+}
+.main-nav .list-menu ul li {
+  display: inline-block;
+  padding: 20px 30px;
+  border-left: 1px solid #3598db;
+}
+.main-nav .list-menu ul li:last-child {
+  border-right: 1px solid #3598db;
+}
+.main-nav .list-menu ul li a {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.main-nav .list-menu ul li a:hover {
+  color: #dcecf7;
+}
+.main-nav .notification {
+  text-align: right;
+  padding-top: 20px;
+}
+.top-header .social-icons ul, .main-header .main-menu ul.menu, .main-nav .list-menu ul, ul.product-buttons, ul.follow-us {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}

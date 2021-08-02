@@ -1,0 +1,53 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans 'Shop' %} | {% block title %}{% endblock %}</title>
+    <link type="text/css" href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/base.css' %}" rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    {% block extra_head %}{% endblock %}
+</head>
+<body class=body>
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 top-header">
+                <h1 style="text-align: center; color: #a0c1ff">Shop</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="main-nav">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-7">
+                            <div class="list-menu">
+                                <ul>
+                                    <li><a href="">Shop</a></li>
+                                    <li><a href="">About</a></li>
+                                    <li><a href="">Contact Us</a></li>
+                                    <li><a href="">Categories</a></li>
+                                </ul>
+                            </div> <!-- /.list-menu -->
+                        </div> <!-- /.col-md-6 -->
+                        <div class="col-md-6 col-sm-5">
+                            <div class="notification">
+                                <span>Maktab 52 final project</span>
+                            </div>
+                        </div> <!-- /.col-md-6 -->
+                    </div> <!-- /.row -->
+                </div> <!-- /.container -->
+            </div> <!-- /.main-nav -->
+        </div>
+    </div>
+</header>
+{% block body %}{% endblock %}
+<div style="min-height: 1000px"></div>
+</body>
+</html>

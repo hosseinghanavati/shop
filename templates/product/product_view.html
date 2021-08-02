@@ -1,0 +1,19 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block body %}
+    {% for product in products %}
+        <div class="col-sm-12 col-md-3col-lg-2">
+            <div class="card" style="width: auto; margin-bottom: 20px">
+                <img class="card-img-top" src="{{ MEDIA_URL }}{{ product.image.url }}" alt="" height="400" width="400">
+                <div class="card-body">
+                    <h4 class="card-title text-center">{{ product.name }}</h4>
+                    <div class="card-text text-center">{{ product.brand }}</div>
+                    <div class="card-text text-center">{{ product.category }}</div>
+                    <button type="button" class="btn btn-dark"><a href=""></a></button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
