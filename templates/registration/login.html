@@ -1,0 +1,30 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans 'Login Page' %}</title>
+    <link type="text/css" href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/login.css' %}" rel="stylesheet">
+</head>
+<body class="body" style="min-height: 1000px">
+<div class="container" style="min-height: 1000px">
+    <div class="row" style="height: 300px"></div>
+    <form method="post" action="" class="bg-white m-auto form">
+        {% csrf_token %}
+        <h2 style="text-align: center">{% trans 'Login' %}</h2>
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        <br>
+        <input type="submit" class="btn btn-primary" value="{% trans 'Login' %}">
+
+    </form>
+</div>
+</body>
+</html>

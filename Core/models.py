@@ -1,5 +1,6 @@
 import datetime
 
+from django.contrib.auth.models import UserManager, AbstractUser
 from django.db import models
 
 # Create your models here.
@@ -12,6 +13,26 @@ class BaseManager(models.Manager):
 
     def archive(self):
         return super().get_queryset()
+
+
+class UserManagerUpdate(UserManager):
+
+    def create(self, **kwargs):
+        return super().create(username=kwargs['phone'], **kwargs)
+
+    def create_superuser(self, username=None, email=None, password=None, **extra_fields):
+        username = extra_fields['phone']
+        return super().create_superuser(username, email, password, **extra_fields)
+
+    def create_user(self, username=None, email=None, password=None, **extra_fields):
+        username = extra_fields['phone']
+        return super().create_user(username, email, password, **extra_fields)
+
+
+class User(AbstractUser):
+    USERNAME_FIELD = 'phone'
+    objects = UserManagerUpdate()
+    phone = models.CharField(max_length=13, unique=True)
 
 
 class TimeStampMixin(models.Model):

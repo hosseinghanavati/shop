@@ -3,17 +3,26 @@
 {% load static %}
 
 {% block body %}
-    {% for product in products %}
-        <div class="col-sm-12 col-md-3col-lg-2">
-            <div class="card" style="width: auto; margin-bottom: 20px">
-                <img class="card-img-top" src="{{ MEDIA_URL }}{{ product.image.url }}" alt="" height="400" width="400">
-                <div class="card-body">
-                    <h4 class="card-title text-center">{{ product.name }}</h4>
-                    <div class="card-text text-center">{{ product.brand }}</div>
-                    <div class="card-text text-center">{{ product.category }}</div>
-                    <button type="button" class="btn btn-dark"><a href=""></a></button>
+    <div class="container">
+    <div class="row">
+        {% for category in categories %}
+            <div class="btn-group"></div>
+        {% endfor %}
+    </div>
+        <div class="row">
+            {% for product in products %}
+                <div class="col-sm-12 col-md-3 col-lg-2" style="padding: 1rem">
+                    <div class="card" style="width: auto; margin-bottom: 20px; border-radius: 10px">
+                        <img class="card-img-top" src="{{ product.image.url }}" alt="product" height="200" width="200">
+                        <div class="card-body">
+                            <h4 class="card-title text-center">{{ product.name }}</h4>
+                            <div class="card-text text-center">{{ product.brand }}</div>
+                            <div class="card-text text-center">{{ product.category }}</div>
+                            <button type="button" class="btn btn-dark"><a href="">Details</a></button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
 {% endblock %}

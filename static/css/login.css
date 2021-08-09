@@ -1,0 +1,10 @@
+.body{
+    background-color: cornflowerblue;
+}
+
+.form{
+    width: 400px;
+    padding: 1rem;
+    border: 1px solid gray;
+    border-radius: 10px;
+}

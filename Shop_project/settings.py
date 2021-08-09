@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'Core',
     'Product',
+    'Customer',
+    'Order',
 ]
 
 MIDDLEWARE = [
@@ -139,4 +142,9 @@ LOCALE_PATHS = [BASE_DIR/'locale']
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'media/'
+
+AUTH_USER_MODEL = "Core.User"
+
+LOGIN_URL = 'Customer:login'
+LOGIN_REDIRECT_URL = 'Customer:panel'

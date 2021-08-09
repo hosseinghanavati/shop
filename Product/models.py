@@ -51,10 +51,10 @@ class Product(BaseModel):
     discount = models.ForeignKey('Discount', on_delete=models.CASCADE, verbose_name=_("Discount"),
                                  help_text=_("choose the discount"), null=True, blank=True)
 
-    @property
-    def img_url(self):
-        if self.image and hasattr(self.image, 'url'):
-            return self.image.url
+    # @property
+    # def img_url(self):
+    #     if self.image and hasattr(self.image, 'url'):
+    #         return self.image.url
 
     def __str__(self):
         return f"{self.name}-{self.brand}"
