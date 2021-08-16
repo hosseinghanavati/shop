@@ -6,46 +6,48 @@
 <head>
     <meta charset="UTF-8">
     <title>{% trans 'Shop' %} | {% block title %}{% endblock %}</title>
-    <link type="text/css" href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+{#    <link type="text/css" href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">#}
     <link type="text/css" href="{% static 'css/base.css' %}" rel="stylesheet">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.1/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
     {% block extra_head %}{% endblock %}
 </head>
 <body class=body>
 <header>
-    <div class="container-fluid">
+{#    <div class="container-fluid">#}
+{#        <div class="row">#}
+{#            <div class="col-12 top-header">#}
+{#                <h1 style="text-align: center; color: #a0c1ff">Shop</h1>#}
+{#            </div>#}
+{#        </div>#}
         <div class="row">
-            <div class="col-12 top-header">
-                <h1 style="text-align: center; color: #a0c1ff">Shop</h1>
+            <div class="container-fluid">
+                <nav class="navbar fixed-top sticky-top navbar-expand-md bg-dark navbar-dark">
+                    <a class="navbar-brand" href="#">MAKTAB SHOP</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <br>
             </div>
         </div>
-        <div class="row">
-            <div class="main-nav">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-7">
-                            <div class="list-menu">
-                                <ul>
-                                    <li><a href="">Shop</a></li>
-                                    <li><a href="">About</a></li>
-                                    <li><a href="">Contact Us</a></li>
-                                    <li><a href="">Categories</a></li>
-                                </ul>
-                            </div> <!-- /.list-menu -->
-                        </div> <!-- /.col-md-6 -->
-                        <div class="col-md-6 col-sm-5">
-                            <div class="notification">
-                                <span>Maktab 52 final project</span>
-                            </div>
-                        </div> <!-- /.col-md-6 -->
-                    </div> <!-- /.row -->
-                </div> <!-- /.container -->
-            </div> <!-- /.main-nav -->
-        </div>
-    </div>
 </header>
 {% block body %}{% endblock %}
 <div style="min-height: 1000px"></div>

@@ -3,12 +3,23 @@
 {% load static %}
 
 {% block body %}
-    <div class="container">
-    <div class="row">
-        {% for category in categories %}
-            <div class="btn-group"></div>
-        {% endfor %}
-    </div>
+{#    <div class="container">#}
+{#    <div class="row">#}
+{#       {% for category in categories %}#}
+{#        <div class="col-2">#}
+{#            <div class="btn-group">#}
+{#                <a href="{{ category.get_absolute_url }}" class="btn btn-danger">{{ category.name }}</a> <!-- besorat dokme-->#}
+{#                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>#}
+{#                <div class="dropdown-menu">#}
+{#                    {% for sub in category %}#}
+{#                        <a class="dropdown-item" href="{{ sub.get_absolute_url }}">{{ sub.name }}</a>#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endfor %}#}
+{#    </div>#}
+    <div class="container-fluid">
         <div class="row">
             {% for product in products %}
                 <div class="col-sm-12 col-md-3 col-lg-2" style="padding: 1rem">
@@ -18,7 +29,7 @@
                             <h4 class="card-title text-center">{{ product.name }}</h4>
                             <div class="card-text text-center">{{ product.brand }}</div>
                             <div class="card-text text-center">{{ product.category }}</div>
-                            <button type="button" class="btn btn-dark"><a href="">Details</a></button>
+                            <button type="button" class="btn btn-dark"><a href="{% url 'Product:product-detail' product.pk %}">Details</a></button>
                         </div>
                     </div>
                 </div>

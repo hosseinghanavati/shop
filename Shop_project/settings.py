@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'Core.middleware.TimeMiddleware',
 ]
 
 ROOT_URLCONF = 'Shop_project.urls'
@@ -148,3 +149,61 @@ AUTH_USER_MODEL = "Core.User"
 
 LOGIN_URL = 'Customer:login'
 LOGIN_REDIRECT_URL = 'Customer:panel'
+LOGOUT_REDIRECT_URL = 'Customer:login'
+
+
+# from logging import LogRecord
+#
+#
+# def length_limit(record: LogRecord) -> bool:
+#     return len(record.getMessage()) > 20
+#
+#
+# LOGGING = {
+#     'version': 1,
+#     'disable_exiting_loggers': False,
+#     'formatters': {
+#         'short': {
+#             'format': '{levelname} : {asctime} {message}',
+#             'style': '{',
+#         },
+#         'verbose': {
+#             'format': '{levelname} : {message} at {module} (process: {process}, thread: {thread})',
+#             'style': '{',
+#         },
+#     },
+#     'filters': {
+#         'length_limit': {
+#             '()': 'django.utils.log.CallbackFilter',
+#             'callback': length_limit,
+#         },
+#     },
+#     'handlers': {
+#         'my-console': {
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'short',
+#             'filters': ['length_limit'],
+#         },
+#         'my-file': {
+#             'class': 'logging.FileHandler',
+#             'formatter': 'verbose',
+#             'file_name': BASE_DIR / 'log/logs.log',
+#         },
+#     },
+#     'root': {
+#         'handlers': ['my-console'],
+#         'level': 'DEBUG'
+#     },
+#     'loggers': {
+#         'project': {
+#             'handlers': ['my-file'],
+#             'level': 'ERROR',
+#             'propagate': True,
+#         },
+#         'project.developers': {
+#             'handlers': ['my-file'],
+#             'level': 'DEBUG',
+#             'propagate': False,
+#         },
+#     },
+# }

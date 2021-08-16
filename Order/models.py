@@ -9,11 +9,12 @@ from django.utils.translation import gettext_lazy as _
 
 
 class OrderItem(BaseModel):
-    order = models.ForeignKey('Order', on_delete=models.CASCADE, verbose_name=_("Order"),
+    order = models.ForeignKey('Order', on_delete=models.PROTECT, verbose_name=_("Order"),
                               help_text=_("order that item belong to it"))
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name=_("Product"),
                                 help_text=_("product that chosen"))
-    quantity = models.PositiveIntegerField(verbose_name=_("Quantity"), help_text=_("quantity of that product"))
+    quantity = models.PositiveIntegerField(verbose_name=_("Quantity"), help_text=_("quantity of that product"),
+                                           default=1)
 
     def __str__(self):
         return f"{self.product}: {self.quantity} -> {self.order}"

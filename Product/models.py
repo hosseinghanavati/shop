@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from .validators import *
 
 # Create your models here.
@@ -17,6 +19,7 @@ class Category(BaseModel):
     class Meta:
         unique_together = ('slug', 'parent',)
         verbose_name_plural = "categories"
+        # verbose_name = 'category'
 
     def __str__(self):
         full_path = [self.name]
@@ -26,6 +29,9 @@ class Category(BaseModel):
             full_path.append(k.name)
             k = k.parent
         return ' -> '.join(full_path[::-1])
+
+    def get_absolute_url(self):
+        return reverse('product:category_filter', args=[self.slug, ])
 
 
 class Brand(BaseModel):
