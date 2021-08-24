@@ -1,9 +1,9 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.utils.translation import gettext_lazy as _
 
 from Core.models import User
-from Customer.models import Customer
+from Customer.models import Customer, Address
 
 
 class LoginForm(forms.Form):
@@ -24,3 +24,17 @@ class SignUpForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class UserUpdateForm(UserChangeForm):
+    class Meta:
+        model = User
+        fields = ('phone', 'first_name', 'last_name', 'email')
+
+
+class AddressCreateForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        fields = ('country', 'province', 'city', 'exact_address', 'house_number', 'zip_code')
+
+

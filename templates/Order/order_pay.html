@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block extra_head %}
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="container" style="min-height: 1000px">
+        <div class="row" style="min-height: 300px">
+            <div class="col-6">
+                    <div class="card">
+                        <div class="card-header"><h4>Pay</h4></div>
+                        <div class="card-body">
+                            <p style="text-align: center; color: gray">{% trans 'Total Price:' %}</p>
+                            <h6 style="text-align: center">{{ order.total_price }} IRR</h6>
+                            <p style="text-align: center; color: gray">{% trans 'Final Price:' %}</p>
+                            <h6 style="text-align: center">{{ order.final_price }} IRR</h6>
+                            <p style="text-align: center; color: gray">{% trans 'Total Discount:' %}</p>
+                            <h6 style="text-align: center">{{ order.get_final_discount }} IRR</h6><br><br>
+                            <p style="text-align: center; color: gray">{% trans 'The amount of pay:' %}</p>
+                            <h6 style="text-align: center">{{ order.final_price }} IRR</h6>
+                        </div>
+                        <div class="card-footer">
+                            <form method="post" action="{% url 'Order:pay' order.id %}">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-primary" value="{% trans 'Pay' %}">
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+{% endblock %}

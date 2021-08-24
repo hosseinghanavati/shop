@@ -1,0 +1,14 @@
+{% extends 'base/base_panel.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block extra_head_panel %}{% endblock %}
+
+
+{% block body_panel %}
+    <form method="post" class="form-group">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="{% trans 'Save' %}" class="btn btn-dark">
+    </form>
+{% endblock %}

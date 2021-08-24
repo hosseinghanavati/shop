@@ -10,27 +10,33 @@ from rest_framework.response import Response
 from rest_framework import mixins, generics, status, permissions
 from rest_framework.viewsets import ModelViewSet
 
+from Cart.forms import CartAddForm
 from .permissions import IsStaffOrReadOnly
 from .serializers import *
 from .models import *
 
 
-class ProductView(generic.ListView):
-    template_name = 'product/product_view.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
-        context['brands'] = Brand.objects.all()
-        context['products'] = Product.objects.all()
-        return context
-    queryset = get_context_data
+class ProductView(View):
+    def get(self, request, slug=None):
+        products = Product.objects.all()
+        categories = Category.objects.filter(is_sub=False)
+        if slug:
+            category = Category.objects.get(slug=slug)
+            products = products.filter(category=category)
+        return render(request, 'product/product_view.html', {'products': products, 'categories': categories})
 
 
-class ProductDetailView(generic.DetailView):
+class ProductDetailView(generic.DetailView, generic.FormView):
     model = Product
     template_name = 'product/product_detail.html'
+    form_class = CartAddForm
 
+    def get_queryset(self):
+        product = Product.objects.filter(slug=self.kwargs['slug'])
+        return product
+
+
+# API
 
 # @api_view(['GET', 'POST'])
 # def product_list_api(request):

@@ -15,12 +15,13 @@ router.register(r'Brands', BrandViewSet)
 
 app_name = 'Product'
 urlpatterns = [
-    path('', ProductView.as_view(), name='products'),
-    path('product/<int:pk>/', ProductDetailView.as_view(), name='product-detail'),
-    # path('category/<slug:slug>', CategoryView.as_view(), name='category')
+    path('', HomeView.as_view(), name='home'),
+    path('caregory', ProductView.as_view(), name='category'),
+    path('<slug:slug>/', ProductDetailView.as_view(), name='product-details'),
+    path('category/<slug:slug>/', ProductView.as_view(), name='category_filter'),
     # path('list_api/', ProductViewSet.as_view({'get': 'list', 'post': 'create'}), name='list_api'),
     # path('detail_api/<int:pk>/', ProductViewSet.as_view({
     #     'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'}), name='detail_api')
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
 ]
 # urlpatterns = format_suffix_patterns(urlpatterns)

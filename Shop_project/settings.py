@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Product',
     'Customer',
     'Order',
+    'Cart',
 ]
 
 MIDDLEWARE = [
@@ -148,8 +149,8 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 AUTH_USER_MODEL = "Core.User"
 
 LOGIN_URL = 'Customer:login'
-LOGIN_REDIRECT_URL = 'Customer:panel'
-LOGOUT_REDIRECT_URL = 'Customer:login'
+LOGIN_REDIRECT_URL = 'Customer:dashboard'
+LOGOUT_REDIRECT_URL = 'Product:home'
 
 
 # from logging import LogRecord

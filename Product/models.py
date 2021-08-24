@@ -11,59 +11,62 @@ from Core.models import BaseModel
 
 class Category(BaseModel):
     name = models.CharField(verbose_name=_("Name"), max_length=50, help_text=_("Insert name of category"))
-    slug = models.SlugField(verbose_name=_("Slug"), help_text=_("Insert Slug name"))
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name=_("Category"),
-                               help_text=_("choose parent category"), null=True, blank=True,
-                               related_name='children')
+    slug = models.SlugField(verbose_name=_("Slug"), help_text=_("Insert Slug name"), max_length=200)
+    sub_category = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name=_("Category"),
+                                     help_text=_("choose parent category"), null=True, blank=True,
+                                     related_name=_('subCategory'))
+    is_sub = models.BooleanField(default=False)
 
     class Meta:
-        unique_together = ('slug', 'parent',)
-        verbose_name_plural = "categories"
-        # verbose_name = 'category'
+        ordering = ('name', )
+        verbose_name = _("category")
+        verbose_name_plural = _("categories")
 
     def __str__(self):
-        full_path = [self.name]
-        k = self.parent
-
-        while k is not None:
-            full_path.append(k.name)
-            k = k.parent
-        return ' -> '.join(full_path[::-1])
+        return self.name
 
     def get_absolute_url(self):
-        return reverse('product:category_filter', args=[self.slug, ])
+        return reverse('Product:category_filter', args=[self.slug, ])
 
 
 class Brand(BaseModel):
     name = models.CharField(verbose_name=_("Name"), help_text=_("Brand name"), max_length=50, unique=True)
     image = models.FileField(upload_to='Brands/images/', blank=True, null=True, verbose_name=_("category image"),
                              help_text=_("upload the category image"))
+    slug = models.SlugField(max_length=200, unique=True, verbose_name=_("Slug"), help_text=_("Insert Slug name"))
 
     def __str__(self):
         return f"{self.name}"
+
+    # def get_absolute_url(self):
+    #     return reverse('Product:brand_filter', args=[self.slug, ])
 
 
 class Product(BaseModel):
     name = models.CharField(verbose_name=_("Name"), help_text=_("product name"), max_length=100)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, verbose_name=_("Brand"),
                               help_text=_("choose brand of product"))
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name=_("Category"),
-                                 help_text=_("choose category of product"))
+    category = models.ManyToManyField(Category, verbose_name=_("Category"),
+                                      help_text=_("choose category of product"), related_name=_("products"))
     image = models.FileField(upload_to='Product/images/', blank=True, null=True, verbose_name=_("product image"),
                              help_text=_("upload the product image"))
     inventory = models.PositiveIntegerField(verbose_name=_("Inventory"),
                                             help_text=_("how many of this product we have in our inventory"))
     price = models.PositiveIntegerField(verbose_name=_("Price"), help_text=_("set price of product"))
+    description = models.TextField(verbose_name=_("Description"), max_length=200,
+                                   help_text=_("provide some description for this product"), null=True, blank=True)
     discount = models.ForeignKey('Discount', on_delete=models.CASCADE, verbose_name=_("Discount"),
                                  help_text=_("choose the discount"), null=True, blank=True)
+    slug = models.SlugField(max_length=200, unique=True, verbose_name=_("Slug"), help_text=_("Insert Slug name"))
 
-    # @property
-    # def img_url(self):
-    #     if self.image and hasattr(self.image, 'url'):
-    #         return self.image.url
+    class Meta:
+        ordering = ('name', )
 
     def __str__(self):
-        return f"{self.name}-{self.brand}"
+        return f"{self.name}"
+
+    def get_absolute_url(self):
+        return reverse('Product:product-details', args=[self.slug, ])
 
     def final_price(self):
         if self.discount:

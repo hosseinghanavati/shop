@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block extra_head %}{% endblock %}
+
+{% block body %}
+    <div class="container" style="padding: 5rem">
+        {% for item in cart %}
+            <div class="row">
+                <div class="col-lg-3 border">
+                    <p class="h3c">product: </p>
+                    <h5 class="pc">{{ item.product }}</h5>
+                </div>
+                <div class="col-lg-3 border">
+                    <p class="h3c">product quantity: </p>
+                    <h5 class="pc">{{ item.quantity }}</h5>
+                </div>
+                <div class="col-lg-3 border">
+                    <p class="h3c">product unit price: </p>
+                    <h5 class="pc">{{ item.price }}</h5>
+                </div>
+                <div class="col-lg-3 border">
+                    <p class="h3c">product Total price: </p>
+                    <h5 class="pc">{{ item.total_price }}</h5>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="h3c">Total price: </p>
+                <h5 class="pc">{{ cart.get_total_price }}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 card">
+                <div class="card-header">{% trans 'Addresses' %}</div>
+                <div class="card-body">
+                    {% if addresses %}
+                        <form method="post" action="{% url 'Order:create-order' %}">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="submit" value="{% trans 'Confirm' %}" class="btn btn-dark">
+                                </div>
+                            </div>
+                        </form>
+                    {% else %}
+                        <h5><a href="{% url 'Customer:addresses' %}">{% trans 'You have not any inserted address CLICK to add' %}</a></h5>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

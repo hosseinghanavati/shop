@@ -1,0 +1,67 @@
+{% extends 'base/base_panel.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block extra_head_panel %}
+    <link href="{% static 'css/Dashboard.css' %}" rel="stylesheet">
+{% endblock %}
+{% block body_panel %}
+    <div class="container" style="padding-top: 4rem">
+        <div class="row">
+            <div class="col-12">
+                <div class="row border-bottom">
+                    <div class="col-lg-6 col-sm-12 border-right">
+                        <p class="h3c">{% trans 'first name:' %}</p>
+                        <h5 class="pc">{{ user.first_name }}</h5>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <p class="h3c">{% trans 'last name:' %}</p>
+                        <h5 class="pc">{{ user.last_name }}</h5>
+                    </div>
+                </div>
+                <div class="row border-bottom">
+                    <div class="col-lg-6 col-sm-12 border-right">
+                        <p class="h3c">{% trans 'e-mail:' %}</p>
+                        <h5 class="pc">{{ user.email }}</h5>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <p class="h3c">{% trans 'phone:' %}</p>
+                        <h5 class="pc">{{ user.phone }}</h5>
+                    </div>
+                </div>
+                <div class="row border-bottom align-items-center">
+                    <a href="#" style="color: #0056b3">{% trans 'see all user specification' %}</a>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>{% trans 'Order Number' %}</th>
+                            <th>{% trans 'Date' %}</th>
+                            <th>{% trans 'Final Price' %}</th>
+                            <th>{% trans 'Status' %}</th>
+                            <th>{% trans 'Details' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ order.id }}</td>
+                                <td>{{ order.create_time_stamp }}</td>
+                                <td>{{ order.final_price }}</td>
+                                <td>{{ order.status }}</td>
+                                <td><a href="#">{% trans 'Details' %}</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

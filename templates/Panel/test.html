@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-Hello world!!!
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+</form>
 </body>
 </html>

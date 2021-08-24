@@ -15,19 +15,31 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
     {% block extra_head %}{% endblock %}
+    <script>
+        function login(){
+            $.ajax({
+                url: '{% url 'Customer:login' %}',
+                type: 'GET',
+                data: {
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+   </script>
 </head>
-<body class=body>
-<header>
-{#    <div class="container-fluid">#}
+<body class="body" style="background-color: rgba(0,30,201,0.08)">
+    <div class="container-fluid containers">
 {#        <div class="row">#}
 {#            <div class="col-12 top-header">#}
 {#                <h1 style="text-align: center; color: #a0c1ff">Shop</h1>#}
 {#            </div>#}
 {#        </div>#}
         <div class="row">
-            <div class="container-fluid">
-                <nav class="navbar fixed-top sticky-top navbar-expand-md bg-dark navbar-dark">
-                    <a class="navbar-brand" href="#">MAKTAB SHOP</a>
+{#            <div class="container-fluid">#}
+                <nav class="navbar fixed-top sticky-top navbar-expand-md bg-dark navbar-dark w-100" style="z-index: 99">
+                    <a class="navbar-brand" href="{% url 'Product:home' %}">{% trans 'MAKTAB SHOP' %}</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -43,13 +55,22 @@
                                 <a class="nav-link" href="#">Link</a>
                             </li>
                         </ul>
+                        <ul class="navbar nav justify-content-lg-end">
+                            {% if request.user.is_authenticated %}
+                                <a class="nav-item nav-link active" href="{% url 'Cart:detail' %}"><img src="https://img.icons8.com/color/40/000000/shopping-cart--v2.png" alt="{% trans 'Cart' %}"/></a>
+                                <a class="nav-item nav-link active" href="{% url 'Customer:panel' %}"><img src="https://img.icons8.com/bubbles/40/000000/user.png" alt="{% trans 'Panel' %}"/></a>
+                                <a class="nav-item nav-link active" href="{% url 'Customer:logout' %}"><img src="https://img.icons8.com/ios-filled/40/4a90e2/logout-rounded-left.png" alt="{% trans 'Logout' %}"/></a>
+                            {% else %}
+                                <a class="nav-item nav-link active" href="{% url 'Customer:login' %}">Login</a>
+                                <a class="nav-item nav-link active" href="{% url 'Customer:signup' %}">Register</a>
+                            {% endif %}
+                        </ul>
                     </div>
                 </nav>
                 <br>
             </div>
         </div>
-</header>
+{#    </div>#}
 {% block body %}{% endblock %}
-<div style="min-height: 1000px"></div>
 </body>
 </html>

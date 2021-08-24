@@ -13,11 +13,25 @@ class CustomerSerializer(serializers.ModelSerializer):
         read_only_fields = ['id']
 
 
+class UserPreviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'phone', 'first_name', 'last_name']
+        read_only_fields = ['id']
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
         read_only_fields = ['id']
+
+
+class AddressPreviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = ['id', 'owner', 'province']
+        read_only_fields = ['id', 'owner']
 
 
 class AddressSerializer(serializers.ModelSerializer):
