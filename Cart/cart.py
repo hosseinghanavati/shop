@@ -52,7 +52,7 @@ class Cart:
         return final_price
 
     def get_total_discount(self):
-        return self.get_final_price() - self.get_total_price()
+        return self.get_total_price() - self.get_final_price()
 
     def clear(self):
         del self.session[CART_SESSION_ID]

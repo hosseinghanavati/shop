@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-01 23:43+0430\n"
+"POT-Creation-Date: 2021-08-25 14:51+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,121 +18,525 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: Product/models.py:11 Product/models.py:32 Product/models.py:41
+#: Cart/forms.py:6 Order/models.py:16 templates/Cart/cart_detail.html:11
+msgid "Quantity"
+msgstr "تعداد"
+
+#: Customer/forms.py:10
+msgid "Phone"
+msgstr "شماره همراه"
+
+#: Customer/forms.py:11
+msgid "Password"
+msgstr "رمز عبور"
+
+#: Customer/models.py:22
+msgid "Owner"
+msgstr "مالک"
+
+#: Customer/models.py:23
+msgid "select owner"
+msgstr "انتخاب مالک"
+
+#: Customer/models.py:24
+msgid "Country"
+msgstr "کشور"
+
+#: Customer/models.py:24
+msgid "enter the country name that you lived"
+msgstr "نام کشور مورد نظر را وارد کنید"
+
+#: Customer/models.py:26
+msgid "Province"
+msgstr "استان"
+
+#: Customer/models.py:26
+msgid "enter the province name that you lived"
+msgstr "نام استان مورد نظر را وارد کنید"
+
+#: Customer/models.py:28
+msgid "City"
+msgstr "شهر"
+
+#: Customer/models.py:28
+msgid "enter the city name that you lived"
+msgstr "نام شهر مورد نظر را وارد کنید"
+
+#: Customer/models.py:30
+msgid "Exact Address"
+msgstr "آدرس دقیق"
+
+#: Customer/models.py:31
+msgid "enter the exact address of where you lived"
+msgstr "آدرس دقیق محل زندگی را وارد کنید"
+
+#: Customer/models.py:32
+msgid "House number"
+msgstr "شماره پلاک"
+
+#: Customer/models.py:32
+msgid "enter house number"
+msgstr "شماره پلاک را وارد کنید"
+
+#: Customer/models.py:34
+msgid "Zip-Code"
+msgstr "کد پستی"
+
+#: Customer/models.py:34
+msgid "enter the zip-code"
+msgstr "کد پستی را وارد کنید"
+
+#: Order/admin.py:19
+#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2186
+msgid "Time"
+msgstr "زمان"
+
+#: Order/admin.py:20 Order/models.py:30
+msgid "Customer"
+msgstr "مشنری"
+
+#: Order/admin.py:21 Order/models.py:14 templates/Cart/cart_detail.html:10
+msgid "Product"
+msgstr "کالا"
+
+#: Order/admin.py:22 Order/models.py:39 templates/Panel/Dashboard.html:46
+#: templates/Panel/order_panel_view.html:17
+msgid "Status"
+msgstr "وضعیت"
+
+#: Order/models.py:12
+#: venv/lib/python3.9/site-packages/django/forms/formsets.py:405
+#: venv/lib/python3.9/site-packages/django/forms/formsets.py:412
+msgid "Order"
+msgstr "سفارش"
+
+#: Order/models.py:13
+msgid "order that item belong to it"
+msgstr "سفارشی که این آیتم به آن تعلق دارد"
+
+#: Order/models.py:15
+msgid "product that chosen"
+msgstr "محصول انتخاب شده"
+
+#: Order/models.py:16
+msgid "quantity of that product"
+msgstr "تعداد این محصول"
+
+#: Order/models.py:31
+msgid "choose the customer"
+msgstr "انتخاب مشتری"
+
+#: Order/models.py:32
+msgid "Address"
+msgstr "آدرس"
+
+#: Order/models.py:33
+msgid "choose the address"
+msgstr "آدرس را انتخاب کن"
+
+#: Order/models.py:39
+msgid "choose status of order"
+msgstr "وضعیت سفارش را انتخاب کن"
+
+#: Order/models.py:41
+msgid "Products"
+msgstr "کالا ها"
+
+#: Order/models.py:41
+msgid "Products of order"
+msgstr "کالاهای سفارش"
+
+#: Order/models.py:42 templates/Cart/cart_detail.html:13
+#: templates/Cart/cart_detail.html:29
+msgid "Total Price"
+msgstr "قیمت کل"
+
+#: Order/models.py:42
+msgid "total price of order"
+msgstr "قیمت کل سفارش"
+
+#: Order/models.py:44 templates/Cart/cart_detail.html:34
+#: templates/Panel/Dashboard.html:45 templates/Panel/order_panel_view.html:16
+msgid "Final Price"
+msgstr "قیمت نهایی"
+
+#: Order/models.py:45
+msgid "final price of order after calculate the discount"
+msgstr "قیمت نهایی سفارش بعد از محاسبه تخفیف"
+
+#: Product/admin.py:15 Product/admin.py:26 Product/admin.py:36
+#: Product/admin.py:52 templates/Panel/addresses_panel_view.html:31
+#: venv/lib/python3.9/site-packages/django/forms/formsets.py:417
+msgid "Delete"
+msgstr "پاک کردن"
+
+#: Product/admin.py:16 Product/admin.py:27 Product/admin.py:37
+#: Product/models.py:13 Product/models.py:33 Product/models.py:46
 msgid "Name"
 msgstr "نام"
 
-#: Product/models.py:11
-msgid "Insert name of category"
-msgstr "نام دسته بندی را مشخص کنید"
+#: Product/admin.py:17
+msgid "sub"
+msgstr "زیر دسته بندی"
 
-#: Product/models.py:12
-msgid "Slug"
-msgstr "اسلاگ"
+#: Product/admin.py:28 Product/admin.py:43
+#: venv/lib/python3.9/site-packages/django/db/models/fields/files.py:375
+msgid "Image"
+msgstr "عکس"
 
-#: Product/models.py:12
-msgid "Insert Slug name"
-msgstr "نام اسلاگ را وارد کنید"
-
-#: Product/models.py:13 Product/models.py:44
+#: Product/admin.py:38 Product/models.py:15 Product/models.py:49
 msgid "Category"
 msgstr "دسته بندی"
 
-#: Product/models.py:14
-msgid "choose parent category"
-msgstr "دسته بندی پدر را انتخاب کن"
-
-#: Product/models.py:32
-msgid "Brand name"
-msgstr "نام برند"
-
-#: Product/models.py:33
-msgid "category image"
-msgstr "عکس دسته بندی"
-
-#: Product/models.py:34
-msgid "upload the category image"
-msgstr "عکس دسته بندی را آپلود کن"
-
-#: Product/models.py:41
-msgid "product name"
-msgstr "نام محصول"
-
-#: Product/models.py:42
+#: Product/admin.py:39 Product/models.py:47
 msgid "Brand"
 msgstr "برند"
 
-#: Product/models.py:43
-msgid "choose brand of product"
-msgstr "برند محصول را انتخاب کن"
+#: Product/admin.py:40 Product/models.py:56
+msgid "Description"
+msgstr "مشخصات"
 
-#: Product/models.py:45
-msgid "choose category of product"
-msgstr "دسته بندی محصول را انتخاب کن"
-
-#: Product/models.py:46
-msgid "product image"
-msgstr "عکس محصول"
-
-#: Product/models.py:47
-msgid "upload the product image"
-msgstr "عکس محصول را آپلود کن"
-
-#: Product/models.py:48
+#: Product/admin.py:41 Product/models.py:53
 msgid "Inventory"
-msgstr "موجودی انبار"
+msgstr "تعداد در انبار"
 
-#: Product/models.py:49
-msgid "how many of this product we have in our inventory"
-msgstr "تعداد موجودی انبار از این محصول را وارد کن"
+#: Product/admin.py:42
+msgid "About Price"
+msgstr "درباره قبمت"
 
-#: Product/models.py:50
-msgid "Price"
-msgstr "قیمت"
-
-#: Product/models.py:50
-msgid "set price of product"
-msgstr "قیمت محصول را وارد کن"
-
-#: Product/models.py:51
-msgid "Discount"
-msgstr "تخفیف"
-
-#: Product/models.py:52
-msgid "choose the discount"
-msgstr "نخفیف را انتخاب کن"
-
-#: Product/models.py:97
+#: Product/admin.py:53 Product/models.py:111
 msgid "Type"
-msgstr "نوع تخفیف"
+msgstr "نوع"
 
-#: Product/models.py:98
-msgid "Choose type of discount"
-msgstr "نوع تخفیف را انتخاب کن"
+#: Product/admin.py:54
+msgid "Discount in percent"
+msgstr "نخفیف به درصد"
 
-#: Product/models.py:103
-msgid "Amount in percent"
-msgstr "تخفیف به درصد"
-
-#: Product/models.py:104
-msgid "set discount in percent type"
-msgstr "مقدار تخفیف به درصد را وارد کن"
-
-#: Product/models.py:106
+#: Product/admin.py:55 Product/models.py:120
 msgid "Discount in amount"
 msgstr "تخفیف به مقدار"
 
-#: Product/models.py:107
+#: Product/models.py:13
+msgid "Insert name of category"
+msgstr "نام دسته بندی را وارد کنید"
+
+#: Product/models.py:14 Product/models.py:36 Product/models.py:60
+msgid "Slug"
+msgstr "اسلاگ"
+
+#: Product/models.py:14 Product/models.py:36 Product/models.py:60
+msgid "Insert Slug name"
+msgstr "نام اسلاگ را وارد کنید"
+
+#: Product/models.py:16
+msgid "choose parent category"
+msgstr "دسته بندی پدر را وارد کنید"
+
+#: Product/models.py:22
+msgid "category"
+msgstr "دسته بندی"
+
+#: Product/models.py:23
+msgid "categories"
+msgstr "دسته بندی ها"
+
+#: Product/models.py:33
+msgid "Brand name"
+msgstr "نام برند"
+
+#: Product/models.py:34
+msgid "category image"
+msgstr "عکس دسته بندی"
+
+#: Product/models.py:35
+msgid "upload the category image"
+msgstr "عکس دسته بندی را آپلود کنید"
+
+#: Product/models.py:46
+msgid "product name"
+msgstr "نام کالا"
+
+#: Product/models.py:48
+msgid "choose brand of product"
+msgstr "مبرند محصول زا انتخاب کنید"
+
+#: Product/models.py:50
+msgid "choose category of product"
+msgstr "دسته بندی محصول را انتخاب کنید"
+
+#: Product/models.py:51
+msgid "product image"
+msgstr "عکس کالا"
+
+#: Product/models.py:52
+msgid "upload the product image"
+msgstr "عکس کالا را وارد کنید"
+
+#: Product/models.py:54
+msgid "how many of this product we have in our inventory"
+msgstr "چه تعداد از این کالا در انبار داریم"
+
+#: Product/models.py:55
+msgid "Price"
+msgstr "قیمت"
+
+#: Product/models.py:55
+msgid "set price of product"
+msgstr "قیمت کالا را وارد کنید"
+
+#: Product/models.py:57
+msgid "provide some description for this product"
+msgstr "مشخصات کالا را وارد کنید"
+
+#: Product/models.py:58
+msgid "Discount"
+msgstr "تخفیف"
+
+#: Product/models.py:59
+msgid "choose the discount"
+msgstr "تخفیف را انتخاب کنید"
+
+#: Product/models.py:112
+msgid "Choose type of discount"
+msgstr "نوع تخفیف را انتخاب کنید"
+
+#: Product/models.py:117
+msgid "Amount in percent"
+msgstr "مقدار به درصد"
+
+#: Product/models.py:118
+msgid "set discount in percent type"
+msgstr "مقدار تخفیف را به درصد وارد کنید"
+
+#: Product/models.py:121
 msgid "set discount in amount"
-msgstr "تخفیف به مقدار وارد کن"
+msgstr "تخفیف به مقدار را وارد کنید"
 
-#: Product/models.py:109
+#: Product/models.py:123
 msgid "Maximum amount"
-msgstr "حداکثر مقدار تخفیف در حالت درصد"
+msgstr "حداکثر مقدار"
 
-#: Product/models.py:110
+#: Product/models.py:124
 msgid "if you choose percent type you can insert maximum amount"
-msgstr "اگر نوع درصد را انتخاب کنی حداکثر مقدار را وارد کن"
+msgstr "اگر نوع درصدی را انتخاب می کنید حداکثر مقدار را وارد کنید"
+
+#: templates/Cart/cart_detail.html:12
+msgid "Unit Price"
+msgstr "قیمت واحد"
+
+#: templates/Cart/cart_detail.html:14 templates/Cart/cart_detail.html:25
+msgid "Remove"
+msgstr "حذف"
+
+#: templates/Cart/cart_detail.html:41
+msgid "Finilize the shopping cart"
+msgstr "نهایی کردن سبد خرید"
+
+#: templates/Customer/SignUp.html:8
+msgid "SignUp Page"
+msgstr "صفحه ثبت نام"
+
+#: templates/Customer/SignUp.html:17 templates/Customer/SignUp.html:26
+msgid "SignUp"
+msgstr "ثبت نام"
+
+#: templates/Order/order_detail.html:13
+msgid "product:"
+msgstr "کالاها"
+
+#: templates/Order/order_detail.html:17
+msgid "item quantity:"
+msgstr "تعداد"
+
+#: templates/Order/order_detail.html:21
+msgid "item unit price:"
+msgstr "قیمت نهایی:"
+
+#: templates/Order/order_detail.html:25
+msgid "items Total price:"
+msgstr "قیمت کل:"
+
+#: templates/Order/order_detail.html:29
+msgid "items final price:"
+msgstr "قیمت نهایی:"
+
+#: templates/Order/order_detail.html:42
+msgid "Date:"
+msgstr "تاریخ:"
+
+#: templates/Order/order_detail.html:46 templates/Order/order_preview.html:31
+msgid "Total price:"
+msgstr "قیمت کل:"
+
+#: templates/Order/order_detail.html:50 templates/Order/order_preview.html:35
+msgid "Total discount:"
+msgstr "تخفیف کل:"
+
+#: templates/Order/order_detail.html:54 templates/Order/order_preview.html:39
+msgid "Final price:"
+msgstr "قیمت نهایی:"
+
+#: templates/Order/order_pay.html:16
+msgid "Total Price:"
+msgstr "قیمت کل:"
+
+#: templates/Order/order_pay.html:18
+msgid "Final Price:"
+msgstr "قیمت نهایی:"
+
+#: templates/Order/order_pay.html:20
+msgid "Total Discount:"
+msgstr "تخفیف کل:"
+
+#: templates/Order/order_pay.html:22
+msgid "The amount of pay:"
+msgstr "مقدار قابل پرداخت:"
+
+#: templates/Order/order_pay.html:31
+msgid "Pay"
+msgstr "پرداخت"
+
+#: templates/Order/order_pay.html:35
+msgid "Cancel"
+msgstr "لغو"
+
+#: templates/Order/order_preview.html:45 templates/base/base_panel.html:39
+msgid "Addresses"
+msgstr "آدرس ها"
+
+#: templates/Order/order_preview.html:55
+msgid "Confirm"
+msgstr "تایید"
+
+#: templates/Order/order_preview.html:60
+msgid "You have not any inserted address CLICK to add"
+msgstr "شما آدرسی وارد نکرده اید برای اضافه کردن آدرس کلیک کنید"
+
+#: templates/Panel/Dashboard.html:14
+msgid "first name:"
+msgstr "نام:"
+
+#: templates/Panel/Dashboard.html:18
+msgid "last name:"
+msgstr "نام خانوادگی:"
+
+#: templates/Panel/Dashboard.html:24
+msgid "e-mail:"
+msgstr "ایمیل:"
+
+#: templates/Panel/Dashboard.html:28
+msgid "phone:"
+msgstr "شماره همراه:"
+
+#: templates/Panel/Dashboard.html:33
+msgid "see all user specification"
+msgstr "دیدن همه مشخصات شما"
+
+#: templates/Panel/Dashboard.html:44 templates/Panel/order_panel_view.html:15
+msgid "Date"
+msgstr "تاریخ"
+
+#: templates/Panel/Dashboard.html:47 templates/Panel/Dashboard.html:57
+#: templates/Panel/order_panel_view.html:18
+#: templates/Panel/order_panel_view.html:28
+msgid "Details"
+msgstr "جزییات"
+
+#: templates/Panel/address_update.html:14 templates/Panel/user_update.html:12
+msgid "Save"
+msgstr "ذخیره"
+
+#: templates/Panel/addresses_panel_view.html:13
+msgid "Add New Address"
+msgstr "اضافه کردن آدرس جدید"
+
+#: templates/Panel/addresses_panel_view.html:26
+msgid "edit this address"
+msgstr "ویرایش این آدرس"
+
+#: templates/Panel/addresses_panel_view.html:46
+msgid "Add Address"
+msgstr "اضافه کردن آدرس"
+
+#: templates/Panel/addresses_panel_view.html:61
+msgid "Close"
+msgstr "بستن"
+
+#: templates/base/base.html:8
+msgid "Shop"
+msgstr "فروشگاه"
+
+#: templates/base/base.html:42
+msgid "MAKTAB SHOP"
+msgstr "فروشگاه مکتب"
+
+#: templates/base/base.html:49
+msgid "Home"
+msgstr "خانه"
+
+#: templates/base/base.html:52
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+#: templates/base/base.html:57 templates/base/base_panel.html:27
+msgid "Panel"
+msgstr "پنل"
+
+#: templates/base/base.html:58
+msgid "Logout"
+msgstr "خروج"
+
+#: templates/base/base.html:60
+msgid "Cart"
+msgstr "سبد خرید"
+
+#: templates/base/base_panel.html:33
+msgid "Dashboard"
+msgstr "داشبورد"
+
+#: templates/base/base_panel.html:36
+msgid "Orders History"
+msgstr "تاریخچه سفارش ها"
+
+#: templates/base/base_panel.html:42
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: templates/base/base_panel.html:45
+msgid "Change Password"
+msgstr "تغییر پسورد"
+
+#: templates/product/product_detail.html:18
+msgid "Brand:"
+msgstr "برند:"
+
+#: templates/product/product_detail.html:22
+msgid "Model:"
+msgstr "مدل:"
+
+#: templates/product/product_detail.html:28
+msgid "Price:"
+msgstr "قیمت:"
+
+#: templates/product/product_detail.html:32
+msgid "Discount:"
+msgstr "تخفیف:"
+
+#: templates/product/product_detail.html:39
+msgid "Discription:"
+msgstr "مشخصات:"
+
+#: templates/registration/login.html:7
+msgid "Login Page"
+msgstr "صفحه ورود"
+
+#: templates/registration/login.html:16 templates/registration/login.html:25
+msgid "Login"
+msgstr "ورود"
+
+#: templates/registration/login.html:26
+msgid "Don't have account? SignUp"
+msgstr "حسابی ندارید؟ثبنام کنید"
 
 #: venv/lib/python3.9/site-packages/django/contrib/messages/apps.py:7
 msgid "Messages"
@@ -502,10 +906,6 @@ msgid ""
 "invalid time."
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2186
-msgid "Time"
-msgstr ""
-
 #: venv/lib/python3.9/site-packages/django/db/models/fields/__init__.py:2312
 msgid "URL"
 msgstr ""
@@ -525,10 +925,6 @@ msgstr ""
 
 #: venv/lib/python3.9/site-packages/django/db/models/fields/files.py:226
 msgid "File"
-msgstr ""
-
-#: venv/lib/python3.9/site-packages/django/db/models/fields/files.py:375
-msgid "Image"
 msgstr ""
 
 #: venv/lib/python3.9/site-packages/django/db/models/fields/json.py:18
@@ -574,7 +970,7 @@ msgstr ""
 
 #: venv/lib/python3.9/site-packages/django/forms/fields.py:54
 msgid "This field is required."
-msgstr ""
+msgstr "این فیلد اجباری است"
 
 #: venv/lib/python3.9/site-packages/django/forms/fields.py:247
 msgid "Enter a whole number."
@@ -628,6 +1024,7 @@ msgid "Please either submit a file or check the clear checkbox, not both."
 msgstr ""
 
 #: venv/lib/python3.9/site-packages/django/forms/fields.py:606
+#: venv/lib/python3.9/site-packages/sorl/thumbnail/fields.py:43
 msgid ""
 "Upload a valid image. The file you uploaded was either not an image or a "
 "corrupted image."
@@ -688,15 +1085,6 @@ msgid "Please submit at least %d form."
 msgid_plural "Please submit at least %d forms."
 msgstr[0] ""
 msgstr[1] ""
-
-#: venv/lib/python3.9/site-packages/django/forms/formsets.py:405
-#: venv/lib/python3.9/site-packages/django/forms/formsets.py:412
-msgid "Order"
-msgstr ""
-
-#: venv/lib/python3.9/site-packages/django/forms/formsets.py:417
-msgid "Delete"
-msgstr ""
 
 #: venv/lib/python3.9/site-packages/django/forms/models.py:763
 #, python-format
@@ -1325,3 +1713,9 @@ msgstr ""
 #: venv/lib/python3.9/site-packages/django/views/templates/default_urlconf.html:249
 msgid "Connect, get help, or contribute"
 msgstr ""
+
+#~ msgid "Order Number"
+#~ msgstr "شماره سفارش"
+
+#~ msgid "subCategory"
+#~ msgstr "زیر دسته بندی"

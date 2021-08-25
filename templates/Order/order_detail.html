@@ -10,23 +10,23 @@
         {% for item in items %}
             <div class="row" style="background-color: white">
                 <div class="col-lg-2 border">
-                    <p class="h3c">product: </p>
+                    <p class="h3c">{% trans 'product:' %} </p>
                     <h5 class="pc">{{ item.product }}</h5>
                 </div>
                 <div class="col-lg-2 border">
-                    <p class="h3c">item quantity: </p>
+                    <p class="h3c">{% trans 'item quantity:'%}</p>
                     <h5 class="pc">{{ item.quantity }}</h5>
                 </div>
                 <div class="col-lg-2 border">
-                    <p class="h3c">item unit price: </p>
+                    <p class="h3c">{% trans 'item unit price:' %} </p>
                     <h5 class="pc">{{ item.product.price }}</h5>
                 </div>
                 <div class="col-lg-2 border">
-                    <p class="h3c">items Total price: </p>
+                    <p class="h3c">{% trans 'items Total price:' %} </p>
                     <h5 class="pc">{{ item.get_normal_price }}</h5>
                 </div>
                 <div class="col-lg-2 border">
-                    <p class="h3c">items final price: </p>
+                    <p class="h3c">{% trans 'items final price:' %} </p>
                     <h5 class="pc">{{ item.get_discounted_price }}</h5>
                 </div>
                  <div class="col-lg-2 border">

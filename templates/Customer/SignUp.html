@@ -1,17 +1,15 @@
+{% extends 'base/base.html' %}
 {% load static %}
 {% load i18n %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <title>{% trans 'SignUp Page' %}</title>
+
+{% block extra_head %}
+    <title>{% block title %}{% trans 'SignUp Page' %}{% endblock %}</title>
     <link type="text/css" href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link type="text/css" href="{% static 'css/login.css' %}" rel="stylesheet">
-</head>
-<body class="body" style="min-height: 1000px">
-<div class="container" style="min-height: 1000px">
-    <div class="row" style="height: 300px"></div>
+{% endblock %}
+{% block body %}
+{#<body class="body" style="min-height: 1000px">#}
+<div class="container" style="padding-top: 8rem">
     <form method="post" action="" class="bg-white m-auto form">
         {% csrf_token %}
         <h2 style="text-align: center">{% trans 'SignUp' %}</h2>
@@ -26,5 +24,4 @@
         <input type="submit" class="btn btn-primary" value="{% trans 'SignUp' %}">
     </form>
 </div>
-</body>
-</html>
+{% endblock %}

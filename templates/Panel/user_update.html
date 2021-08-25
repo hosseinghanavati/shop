@@ -2,13 +2,30 @@
 {% load static %}
 {% load i18n %}
 
-{% block extra_head_panel %}{% endblock %}
+{% block extra_head_panel %}
+    <title>{% block title_panel %}{% trans 'User Info Update' %}{% endblock %}</title>
+{% endblock %}
 
 
 {% block body_panel %}
-    <form method="post" class="form-group">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="{% trans 'Save' %}" class="btn btn-dark">
-    </form>
+    <div class="container">
+        <div class="row" style="padding-top: 8rem; padding-left: 8rem">
+            <div class="col-lg-4" style="background-color: white">
+                <h3 style="text-align: center; color: gray">{% trans 'Update' %}</h3>
+                <form method="post" class="form-group" style="padding-left: 4rem">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {{ field.label_tag }}<br>
+                        {{ field }}<br>
+                        {% for error in field.error %}
+                            <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+
+                    {% endfor %}
+                    <input type="submit" value="{% trans 'Save' %}" class="btn btn-dark">
+                </form>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

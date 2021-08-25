@@ -2,15 +2,24 @@
 {% load static %}
 {% load i18n %}
 
-{% block extra_head_panel %}{% endblock %}
+{% block extra_head_panel %}
+    <title>{% block title_panel %}{% trans 'Update Address' %}{% endblock %}</title>
+    <link href="{% static 'css/login.css' %}">
+{% endblock %}
 
 {% block body_panel %}
     <div class="container" style="padding-top: 2rem">
         <div class="row">
             <div class="col-12">
-                <form class="form-group" method="post">
+                <form class="form-group form" method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {% for field in form %}
+                        {{ field.label_tag }}<br>
+                        {{ field }}<br>
+                        {% for error in field.error %}
+                            <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
                     <input type="submit" class="btn btn-dark" value="{% trans 'Save' %}">
                 </form>
             </div>

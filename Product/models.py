@@ -12,9 +12,9 @@ from Core.models import BaseModel
 class Category(BaseModel):
     name = models.CharField(verbose_name=_("Name"), max_length=50, help_text=_("Insert name of category"))
     slug = models.SlugField(verbose_name=_("Slug"), help_text=_("Insert Slug name"), max_length=200)
-    sub_category = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name=_("Category"),
-                                     help_text=_("choose parent category"), null=True, blank=True,
-                                     related_name=_('subCategory'))
+    Category = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name=_("Category"),
+                                 help_text=_("choose parent category"), null=True, blank=True,
+                                 related_name='subCategory')
     is_sub = models.BooleanField(default=False)
 
     class Meta:
@@ -47,7 +47,7 @@ class Product(BaseModel):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, verbose_name=_("Brand"),
                               help_text=_("choose brand of product"))
     category = models.ManyToManyField(Category, verbose_name=_("Category"),
-                                      help_text=_("choose category of product"), related_name=_("products"))
+                                      help_text=_("choose category of product"), related_name="products")
     image = models.FileField(upload_to='Product/images/', blank=True, null=True, verbose_name=_("product image"),
                              help_text=_("upload the product image"))
     inventory = models.PositiveIntegerField(verbose_name=_("Inventory"),

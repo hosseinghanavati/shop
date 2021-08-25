@@ -9,8 +9,7 @@
     <link type="text/css" href="{% static 'css/login.css' %}" rel="stylesheet">
 {% endblock %}
 {% block body %}
-<div class="container" style="min-height: 1000px">
-    <div class="row" style="height: 300px"></div>
+<div class="container" style="padding-top: 12rem">
     <form method="post" action="" class="bg-white m-auto form">
         {% csrf_token %}
         <h2 style="text-align: center">{% trans 'Login' %}</h2>

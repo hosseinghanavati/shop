@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
   {% block extra_head %}
-  	<title>Sidebar 04</title>
+  	<title>{% block title %}{% trans 'Panel' %} > {% block title_panel %}{% endblock %}{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 

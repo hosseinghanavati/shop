@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block extra_head_panel %}
-
+    <title>{% block title_panel %}{% trans 'Addresses' %}{% endblock %}</title>
 {% endblock %}
 
 {% block body_panel %}
@@ -15,7 +15,7 @@
         </div><br><br>
         <div class="row">
             {% for address in addresses %}
-                <div class="col-6" style="padding-bottom: 20px">
+                <div class="col-lg-6 col-md-12" style="padding-bottom: 20px">
                     <div class="card">
                         <div class="card-header"><h4>{{ address.city }},{{ address.exact_address }}</h4></div>
                         <div class="card-body">
