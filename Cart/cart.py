@@ -51,6 +51,9 @@ class Cart:
             final_price = product.final_price() * int(item['quantity']) + final_price
         return final_price
 
+    def get_total_discount(self):
+        return self.get_final_price() - self.get_total_price()
+
     def clear(self):
         del self.session[CART_SESSION_ID]
         self.save()

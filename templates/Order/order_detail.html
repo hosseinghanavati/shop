@@ -1,10 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/base_panel.html' %}
+{% load static %}
+{% load i18n %}
 
-</body>
-</html>
+{% block extra_head_panel %}{% endblock %}
+
+
+{% block body_panel %}
+    <div class="container" style="padding-top: 5rem">
+        {% for item in items %}
+            <div class="row" style="background-color: white">
+                <div class="col-lg-2 border">
+                    <p class="h3c">product: </p>
+                    <h5 class="pc">{{ item.product }}</h5>
+                </div>
+                <div class="col-lg-2 border">
+                    <p class="h3c">item quantity: </p>
+                    <h5 class="pc">{{ item.quantity }}</h5>
+                </div>
+                <div class="col-lg-2 border">
+                    <p class="h3c">item unit price: </p>
+                    <h5 class="pc">{{ item.product.price }}</h5>
+                </div>
+                <div class="col-lg-2 border">
+                    <p class="h3c">items Total price: </p>
+                    <h5 class="pc">{{ item.get_normal_price }}</h5>
+                </div>
+                <div class="col-lg-2 border">
+                    <p class="h3c">items final price: </p>
+                    <h5 class="pc">{{ item.get_discounted_price }}</h5>
+                </div>
+                 <div class="col-lg-2 border">
+                     <a href="{% url 'Product:product-details' item.product.slug %}">
+                         <img src="{{ item.product.image.url }}" width="50" height="50">
+                     </a>
+
+                </div>
+            </div>
+        {% endfor %}
+        <div class="row" style="background-color: white">
+            <div class="col-lg-3">
+                <p class="h3c">{% trans 'Date:' %} </p>
+                <h5 class="pc">{{ order.create_time_stamp }}</h5>
+            </div>
+            <div class="col-lg-3">
+                <p class="h3c">{% trans 'Total price:' %} </p>
+                <h5 class="pc">{{ order.total_price }}</h5>
+            </div>
+            <div class="col-lg-3">
+                <p class="h3c">{% trans 'Total discount:' %}</p>
+                <h5 class="pc">{{ order.get_final_discount }}</h5>
+            </div>
+            <div class="col-lg-3">
+                <p class="h3c">{% trans 'Final price:' %}</p>
+                <h5 class="pc">{{ order.final_price }}</h5>
+            </div>
+        </div>
+    </div>
+{% endblock %}

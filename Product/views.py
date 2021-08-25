@@ -14,16 +14,36 @@ from Cart.forms import CartAddForm
 from .permissions import IsStaffOrReadOnly
 from .serializers import *
 from .models import *
+from django.core.paginator import Paginator
+
+
+
+class HomeView(generic.ListView):
+    template_name = 'product/home.html'
+    queryset = Product.objects.all()
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        categories = Category.objects.filter(is_sub=False)
+        products = Product.objects.all().order_by('-create_time_stamp')[:8]
+
+        context = {
+            'categories': categories,
+            'products': products,
+        }
+        return context
 
 
 class ProductView(View):
     def get(self, request, slug=None):
         products = Product.objects.all()
         categories = Category.objects.filter(is_sub=False)
+        paginator = Paginator(products, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
         if slug:
             category = Category.objects.get(slug=slug)
             products = products.filter(category=category)
-        return render(request, 'product/product_view.html', {'products': products, 'categories': categories})
+        return render(request, 'product/product_view.html', {'products': products, 'categories': categories, 'page_obj': page_obj})
 
 
 class ProductDetailView(generic.DetailView, generic.FormView):

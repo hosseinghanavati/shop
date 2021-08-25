@@ -56,7 +56,7 @@
                                 <td>{{ order.create_time_stamp }}</td>
                                 <td>{{ order.final_price }}</td>
                                 <td>{{ order.status }}</td>
-                                <td><a href="#">{% trans 'Details' %}</a></td>
+                                <td><a href="{% url 'Order:detail' order.pk %}">{% trans 'Details' %}</a></td>
                             </tr>
                         {% endfor %}
                     </tbody>

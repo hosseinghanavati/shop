@@ -27,9 +27,17 @@
             </div>
         {% endfor %}
         <div class="row">
-            <div class="col-lg-12">
-                <p class="h3c">Total price: </p>
+            <div class="col-lg-4">
+                <p class="h3c">{% trans 'Total price:' %} </p>
                 <h5 class="pc">{{ cart.get_total_price }}</h5>
+            </div>
+            <div class="col-lg-4">
+                <p class="h3c">{% trans 'Total discount:' %}</p>
+                <h5 class="pc">{{ cart.get_total_discount }}</h5>
+            </div>
+            <div class="col-lg-4">
+                <p class="h3c">{% trans 'Final price:' %}</p>
+                <h5 class="pc">{{ cart.get_final_price }}</h5>
             </div>
         </div>
         <div class="row">

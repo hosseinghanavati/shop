@@ -19,6 +19,15 @@ class OrderDetail(LoginRequiredMixin, generic.DetailView):
     model = Order
     template_name = 'Order/order_detail.html'
 
+    def get_context_data(self, **kwargs):
+        order = Order.objects.get(id=self.kwargs['pk'])
+        order_items = OrderItem.objects.filter(order_id=self.kwargs['pk'])
+        context = {
+            'items': order_items,
+            'order': order
+        }
+        return context
+
 
 @login_required()
 def create_order(request):
@@ -57,6 +66,14 @@ def pay_view(request, order_id):
 def order_pay(request, order_id):
     order = Order.objects.get(id=order_id)
     order.status = 'paid'
+    order.save()
+    return redirect('Customer:dashboard')
+
+
+@login_required()
+def order_cancel(request, order_id):
+    order = Order.objects.get(id=order_id)
+    order.status = 'canceled'
     order.save()
     return redirect('Customer:dashboard')
 

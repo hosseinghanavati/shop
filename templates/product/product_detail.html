@@ -9,34 +9,51 @@
 <body>
 {% block body %}
     <div class="container">
-        <div class="row">
+        <div class="row" style="padding-top: 6rem">
 
-            <div class="col-lg-8" style="padding: 2rem">
-                <div class="row border-bottom">
-                    <div class="col-lg-6 col-sm-12 border-right">
-                        <p class="h3c">{% trans 'Brand:' %}</p>
-                        <h5 class="pc">{{ product.brand }}</h5>
+            <div class="col-lg-8" style="padding-top: 2rem">
+                <div class="container-fluid">
+                    <div class="row border-bottom">
+                        <div class="col-lg-6 col-sm-12 border-right">
+                            <p class="h3c">{% trans 'Brand:' %}</p>
+                            <h5 class="pc">{{ product.brand }}</h5>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <p class="h3c">{% trans 'Model:' %}</p>
+                            <h5 class="pc">{{ product.name }}</h5>
+                        </div>
                     </div>
-                    <div class="col-lg-6 col-sm-12">
-                        <p class="h3c">{% trans 'Model:' %}</p>
-                        <h5 class="pc">{{ product.name }}</h5>
+                    <div class="row border-bottom">
+                        <div class="col-lg-6 col-sm-12 border-right">
+                            <p class="h3c">{% trans 'Price:' %}</p>
+                            <h5 class="pc">{{ product.price }}</h5>
+                        </div>
+                        <div class="col-lg-6 col-sm-12 border-right">
+                            <p class="h3c">{% trans 'Discount:' %}</p>
+                            <h5 class="pc">{{ product.discount }}</h5>
+                        </div>
                     </div>
-                </div>
-                <div class="row border-bottom">
-                <div class="col-lg-6 col-sm-12 border-right">
-                    <p class="h3c">{% trans 'Price:' %}</p>
-                    <h5 class="pc">{{ product.price }}</h5>
-                </div>
-                <div class="col-lg-6 col-sm-12">
-                     <form action="{% url 'Cart:cart_add' product.pk %}" method="post">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <input class="btn-dark btn-dark" value="Add To Cart" type="submit">
-                     </form>
+
+                    <div class="row border-bottom">
+                         <div class="col-lg-6 col-sm-12 border-right">
+                            <p class="h3c">{% trans 'Discription:' %}</p>
+                            <p class="pc">{{ product.description }}</p>
+                         </div>
+                    </div>
+                    <div class="row border-bottom">
+                        <div class="col-lg-6 col-sm-12"></div>
+                        <div class="col-lg-6 col-sm-12">
+                            <form class="form-group" action="{% url 'Cart:cart_add' product.pk %}" method="post">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <input class="btn-dark btn-dark" value="Add To Cart" type="submit">
+                            </form>
+                        </div>
+                    </div>
                 </div>
 
             </div>
-            <div class="col-lg-4" style="padding: 2rem">
+            <div class="col-lg-4" style="padding-top: 2rem">
                 <img src="{{ product.image.url }}" alt="product" height="400" width="400">
             </div>
         </div>

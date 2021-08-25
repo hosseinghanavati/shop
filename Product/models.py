@@ -128,7 +128,7 @@ class Discount(BaseModel):
 
     def __str__(self):
         if self.type == 'PT':
-            return f"{self.type}->{self.discount_in_percent}-{self.maximum_amount}"
+            return f"{self.discount_in_percent}%  Maximum: {self.maximum_amount} IRR"
         else:
-            return f"{self.type}->{self.discount_in_amount}"
+            return f"{self.discount_in_amount}IRR"
 

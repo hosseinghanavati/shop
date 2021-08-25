@@ -12,8 +12,9 @@ urlpatterns = [
     path('api/', include(router.urls), name='api'),
     path('preview/', order_preview, name='preview'),
     path('create/', create_order, name='create-order'),
-    path('<int:order_id>/', OrderDetail.as_view(), name='detail'),
+    path('<int:pk>/', OrderDetail.as_view(), name='detail'),
     path('pay/view/<int:order_id>/', pay_view, name='pay-view'),
     path('pay/<int:order_id>/', order_pay, name='pay'),
+    path('cancel/<int:order_id>/', order_cancel, name='cancel'),
 ]
 

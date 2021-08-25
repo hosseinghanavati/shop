@@ -73,6 +73,7 @@ class DashBoardView(LoginRequiredMixin, generic.ListView):
         }
         return super().get_context_data(**context)
 
+
 class OrderPanelView(LoginRequiredMixin, generic.ListView):
     template_name = 'Panel/order_panel_view.html'
 

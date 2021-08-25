@@ -27,12 +27,12 @@
             <div class="col-12 col-lg-10">
                 <div class="container-fluid">
                     <div class="row">
-                        {% for product in products %}
+                        {% for product in page_obj %}
                             <div class="col-sm-12 col-md-3 col-lg-2" style="padding: 1rem;">
                                 <div class="card" style="width: 220px; margin-bottom: 20px; border-radius: 10px">
                                     <img class="card-img-top" src="{{ product.image.url }}" alt="product" height="200" width="200">
                                     <div class="card-body">
-                                        <h4 class="card-title text-center">{{ product.name }}</h4>
+                                        <h5 class="card-title text-center">{{ product.name }}</h5>
                                         <div class="card-text text-center">{{ product.brand }}</div>
                                         <div class="card-text text-center">{{ product.price }} IRR</div>
                                         <button type="button" class="btn btn-dark"><a href="{% url 'Product:product-details' product.slug %}">Details</a></button>
@@ -44,6 +44,23 @@
                 </div>
             </div>
         </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
     </div>
 
 

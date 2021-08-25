@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load sorl_thumbnail %}
+
+{% block extra_head %}{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        {% for category in categories %}
+            <div class="row">
+                <div class="col-12" style="padding: 3rem">
+                    <div class="card">
+                        <div class="card-header"><h4>{{ category.name }}</h4></div>
+                        <div class="card-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    {% for product in products %}
+                                        {% if category in product.category.all %}
+                                            <div class="col-sm-12 col-md-3 col-lg-2" style="padding: 1rem;">
+                                                <div class="card" style="width: 220px; margin-bottom: 20px; border-radius: 10px">
+{#                                                    {% thumbnail product.image "100x100" crop="center" as im %}#}
+{#                                                        <img class="card-img-top" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">#}
+{#                                                    {% endthumbnail %}#}
+                                                    <img  src="{{ product.image.url }}" alt="product" height="200" width="200">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title text-center">{{ product.name }}</h5>
+                                                        <div class="card-text text-center">{{ product.brand }}</div>
+                                                        <div class="card-text text-center">{{ product.price }} IRR</div>
+                                                        <button type="button" class="btn btn-dark"><a href="{% url 'Product:product-details' product.slug %}">Details</a></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
