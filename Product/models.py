@@ -12,7 +12,7 @@ from Core.models import BaseModel
 class Category(BaseModel):
     name = models.CharField(verbose_name=_("Name"), max_length=50, help_text=_("Insert name of category"))
     slug = models.SlugField(verbose_name=_("Slug"), help_text=_("Insert Slug name"), max_length=200)
-    Category = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name=_("Category"),
+    sub_category = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name=_("Category"),
                                  help_text=_("choose parent category"), null=True, blank=True,
                                  related_name='subCategory')
     is_sub = models.BooleanField(default=False)

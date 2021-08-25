@@ -1,8 +1,19 @@
 {% extends 'base/base.html' %}
 {% load i18n %}
 
+{% block extra_head %}
+    <style>
+        #quantity li{
+            display: none;
+        }
+        #quantity label{
+            display: none;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
-    <div class="container" style="padding: 5rem">
+    <div class="container-fluid" style="padding: 5rem">
         <table class="table">
             <thead class="thead-dark">
             <tr>
@@ -11,6 +22,7 @@
                 <th scope="col">{% trans 'Quantity' %}</th>
                 <th scope="col">{% trans 'Unit Price' %}</th>
                 <th scope="col">{% trans 'Total Price' %}</th>
+                <th scope="col">{% trans 'Update' %}</th>
                 <th scope="col">{% trans 'Remove' %}</th>
             </tr>
             </thead>
@@ -22,17 +34,29 @@
                     <td>{{ item.quantity }}</td>
                     <td>{{ item.price }} IRR</td>
                     <td>{{ item.total_price }} IRR</td>
+                    <td id="quantity">
+                        <div class="row">
+                            <form method="post" action="{% url 'Cart:quantity_update' item.product.id %}" style="display: flex">
+                                {% csrf_token %}
+                                    {{ form.as_p }}
+                                <div class="col-6">
+                                    <input type="submit" class="btn btn-dark" value="{% trans 'Update' %}">
+                                </div>
+
+                            </form>
+                        </div>
+                    </td>
                     <td><a href="{% url 'Cart:cart_remove' item.product.id %}" class="btn btn-danger">{% trans 'Remove' %}</a></td>
                 </tr>
             {% endfor %}
             <tr class="table-dark">
                 <td>{% trans 'Total Price' %}</td>
-                <td colspan="4"></td>
+                <td colspan="5"></td>
                 <td>{{ cart.get_total_price }} IRR</td>
             </tr>
             <tr class="table-dark">
                 <td>{% trans 'Final Price' %}</td>
-                <td colspan="4"></td>
+                <td colspan="5"></td>
                 <td>{{ cart.get_final_price }} IRR</td>
             </tr>
             </tbody>
